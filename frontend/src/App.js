@@ -4,13 +4,11 @@ import LoginForm from "./components/LoginForm";
 import Forecast from "./components/forecast/Forecast";
 import RegistrationForm from "./components/RegistrationForm";
 
-import Container from "@material-ui/core/Container";
-
 import "./App.css";
 
 function App() {
   return (
-    <Container maxWidth="sm">
+    <div >
       <Navigation position="fixed" />
 
       <section className="console">
@@ -28,7 +26,7 @@ function App() {
           </Route>
         </Switch>
       </section>
-    </Container>
+    </div>
   );
 }
 

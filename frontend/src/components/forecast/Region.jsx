@@ -1,43 +1,45 @@
-import { Fragment } from 'react'
-import Container from '@material-ui/core/Container'
-import { dayDateTime } from '../../utilities/TimeConverter'
+import { Fragment } from "react";
+import Container from "@material-ui/core/Container";
+import { dayDateTime } from "../../utilities/TimeConverter";
 
-import Daily from './Daily'
-import Hourly from './Hourly'
+import Daily from "./Daily";
+import Hourly from "./Hourly";
 
-const Region = () => {
+const Region = ({ forecast }) => {
+
   return (
-    <Container className='component' id='forecast'>
+    <div className="component" id="forecast">
       <Fragment>
-        <section id='region-left'>
-          <h2 id='region'>Kingsbridge</h2>
+        <section id="region-left">
+          <h2 id="region">{forecast.name}</h2>
           <p>{dayDateTime()}</p>
           <br />
 
-          <section id='hi-low'>
-            <img src='cloud' alt='skies' />
-            <p>High</p>/<p>Low</p>
+          <section id="hi-low">
+            <img src="cloud" alt={forecast.weather[0].description} />
+            <p>high: {forecast.main.temp_max}&deg;</p>/
+            <p>low: {forecast.main.temp_min}&deg;</p>
           </section>
 
-          <section id='temp'>
-            <p>53&deg;</p>
-            <p>RealFeel 52&deg;</p>
+          <section id="temp">
+            <p>{forecast.main.temp}&deg;</p>
+            <p>RealFeel {forecast.main.feels_like}&deg;</p>
           </section>
 
-          <section id='weather'>Rain</section>
+          <section id="weather">{forecast.weather[0].description}</section>
         </section>
       </Fragment>
-      <section id='daily-hourly'>
-        <span id='hourly'>
+      <section id="daily-hourly">
+        <span id="hourly">
           <Hourly />
         </span>
 
-        <span id='daily'>
+        <span id="daily">
           <Daily />
         </span>
       </section>
-    </Container>
-  )
-}
+    </div>
+  );
+};
 
-export default Region
+export default Region;
